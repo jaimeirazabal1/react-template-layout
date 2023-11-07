@@ -5,10 +5,12 @@ import DashboardMenu from './common/DashboardMenu'; // Importa el componente Das
 import UsersMenu from './common/UsersMenu'; // Importa el componente UsersMenu
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import LoginMenu from './common/LoginMenu';
+import TermsMenu from './common/TermsMenu';
 
 const SidebarContainer = styled.div`
   width: 250px;
-  background-color: #333;
+  background-color: grey;
   color: #fff;
   height: 100%;
   position: fixed;
@@ -30,13 +32,15 @@ const SidebarItem = styled(Link)`
 `;
 
 const Sidebar = () => {
-    return (
-        <SidebarContainer>
-            <Logo src="logoipsum-297.svg" alt="Logo de la aplicación" />
-            <SidebarItem to="/"><DashboardMenu /></SidebarItem>
-            <SidebarItem to="/about"><UsersMenu /></SidebarItem>
-        </SidebarContainer>
-    );
+  return (
+    <SidebarContainer>
+      <Logo src="http://dslsistemacheck.com/img/logo_check_by_dsl.png" alt="Logo de la aplicación" />
+      {/* <SidebarItem to="/"><DashboardMenu /></SidebarItem> */}
+      <SidebarItem to="/terms"><TermsMenu /></SidebarItem>
+      {/* <SidebarItem to="/about"><UsersMenu /></SidebarItem> */}
+      <SidebarItem to="/login"><LoginMenu /></SidebarItem>
+    </SidebarContainer>
+  );
 };
 
 export default Sidebar;

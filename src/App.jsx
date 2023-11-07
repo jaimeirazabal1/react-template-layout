@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import About from './pages/About';
+import Login from './components/Login';
+import TerminosYPoliticas from './components/Terms';
 
 const AppContainer = styled.div`
   display: flex;
@@ -16,8 +18,6 @@ const ContentContainer = styled.div`
   padding: 16px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centrar horizontalmente */
-  justify-content: center; /* Centrar verticalmente */
   margin-left: 250px; /* Ancho del sidebar */
 `;
 
@@ -30,6 +30,8 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
+            <Route path="/terms" component={TerminosYPoliticas} />
+            <Route path="/login" component={Login} />
           </Switch>
         </ContentContainer>
       </AppContainer>
