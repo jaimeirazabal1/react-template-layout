@@ -1,12 +1,11 @@
 // src/components/Sidebar.js
 import React from 'react';
 import styled from 'styled-components';
-import DashboardMenu from './common/DashboardMenu'; // Importa el componente DashboardMenu
-import UsersMenu from './common/UsersMenu'; // Importa el componente UsersMenu
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import LoginMenu from './common/LoginMenu';
 import TermsMenu from './common/TermsMenu';
+import DashboardMenu from './common/DashboardMenu';
 
 const SidebarContainer = styled.div`
   width: 250px;
@@ -31,13 +30,18 @@ const SidebarItem = styled(Link)`
   }
 `;
 
-const Sidebar = () => {
+const Sidebar = ({ isAuthenticated }) => {
   return (
     <SidebarContainer>
-      <Logo src="http://dslsistemacheck.com/img/logo_check_by_dsl.png" alt="Logo de la aplicación" />
-      {/* <SidebarItem to="/"><DashboardMenu /></SidebarItem> */}
+      <Logo src="http://dslsistemacheck.com/img/logo-DSL.png" alt="Logo de la aplicación" />
+      {isAuthenticated && (
+        <>
+          {/* Aquí se renderizarán las rutas protegidas solo si el usuario está autenticado */}
+          <SidebarItem to="/dashboard"><DashboardMenu /></SidebarItem>
+          {/* Otras rutas protegidas si las tienes */}
+        </>
+      )}
       <SidebarItem to="/terms"><TermsMenu /></SidebarItem>
-      {/* <SidebarItem to="/about"><UsersMenu /></SidebarItem> */}
       <SidebarItem to="/login"><LoginMenu /></SidebarItem>
     </SidebarContainer>
   );

@@ -1,5 +1,5 @@
 // src/App.js
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Sidebar from './components/Sidebar';
@@ -7,6 +7,9 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Login from './components/Login';
 import TerminosYPoliticas from './components/Terms';
+import PrivateRoute from './components/PrivateRoute'; // Importa PrivateRoute
+import Dashboard from './components/Dashboard';
+import UsersList from './components/Users/UsersList';
 
 const AppContainer = styled.div`
   display: flex;
@@ -22,16 +25,31 @@ const ContentContainer = styled.div`
 `;
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(true); // Agrega el estado de autenticación
+
   return (
     <Router>
       <AppContainer>
-        <Sidebar />
+        <Sidebar isAuthenticated={isAuthenticated} />
         <ContentContainer>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/terms" component={TerminosYPoliticas} />
-            <Route path="/login" component={Login} />
+            <Route path="/login">
+              <Login setIsAuthenticated={setIsAuthenticated} />
+            </Route>
+            <PrivateRoute
+              path="/dashboard"
+              component={Dashboard}
+              isAuthenticated={isAuthenticated}
+            />
+            <PrivateRoute
+              path="/users"
+              component={UsersList}
+              isAuthenticated={isAuthenticated}
+            />
+
           </Switch>
         </ContentContainer>
       </AppContainer>
