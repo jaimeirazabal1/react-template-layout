@@ -1,62 +1,109 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Pagination from './Pagination';
+import usersData from '../../dataExample/users.json';
 import styled from 'styled-components';
-import { FaUser } from 'react-icons/fa'; // Importa el icono de usuario de "react-icons"
+import { FaUser, FaEdit, FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
-// Datos ficticios de usuarios (puedes reemplazarlos con tus datos reales)
-const usersData = [
-    { id: 1, name: 'Usuario 1', email: 'usuario1@example.com' },
-    { id: 2, name: 'Usuario 2', email: 'usuario2@example.com' },
-    { id: 3, name: 'Usuario 3', email: 'usuario3@example.com' },
-    { id: 4, name: 'Usuario 4', email: 'usuario4@example.com' },
-];
-
-// Define los estilos para el contenedor de usuarios
-const UsersContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+const UserTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
 `;
 
-// Define los estilos para el elemento de usuario
-const UserCard = styled.div`
-  width: 200px;
-  background-color: #f0f0f0;
+const TableHeader = styled.th`
+  background-color: #689F38;
+  color: white;
+  padding: 8px;
+  text-align: left;
+`;
+
+const TableData = styled.td`
   border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 16px;
+  padding: 8px;
+`;
+
+const ActionIcons = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const UserIcon = styled(FaUser)`
-  font-size: 36px;
-  color: #0078d4;
-`;
-
-const UserName = styled.h3`
-  font-size: 18px;
-  margin-top: 8px;
-`;
-
-const UserEmail = styled.p`
-  font-size: 14px;
-  color: #555;
-  margin-top: 4px;
+  justify-content: space-between;
 `;
 
 const UsersList = () => {
-    return (
-        <UsersContainer>
-            {usersData.map((user) => (
-                <UserCard key={user.id}>
-                    <UserIcon />
-                    <UserName>{user.name}</UserName>
-                    <UserEmail>{user.email}</UserEmail>
-                </UserCard>
+  const [users, setUsers] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage] = useState(8); // Número de usuarios por página
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        // const response = await axios.get('../../dataExample/users.json'); // Ruta a tu archivo JSON simulado
+        console.log('users', users)
+        const allUsers = usersData.users;
+        setUsers(allUsers);
+      } catch (error) {
+        console.error('Error al cargar los usuarios', error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  // Calcular los índices de inicio y final de los usuarios en la página actual
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+
+  // Cambiar de página
+  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber); // Define la función handlePageChange aquí
+
+  return (
+    <div>
+      <h1>Lista de Usuarios</h1>
+      <div>
+        <UserTable>
+          <thead>
+            <tr>
+              <TableHeader>Nº</TableHeader>
+              <TableHeader>Usuario</TableHeader>
+              <TableHeader>Sucursal</TableHeader>
+              <TableHeader>Tipo de Usuario</TableHeader>
+              <TableHeader>Correo Electrónico</TableHeader>
+              <TableHeader>Accesos</TableHeader>
+              <TableHeader>Última IP</TableHeader>
+              <TableHeader>Último Acceso</TableHeader>
+              <TableHeader>Acciones</TableHeader>
+            </tr>
+          </thead>
+          <tbody>
+            {currentUsers.map((user, index) => (
+              <tr key={user.id}>
+                <TableData>{index + 1}</TableData>
+                <TableData>{user.username}</TableData>
+                <TableData>{user.branch}</TableData>
+                <TableData>{user.userType}</TableData>
+                <TableData>{user.email}</TableData>
+                <TableData>{user.accesses}</TableData>
+                <TableData>{user.lastIp}</TableData>
+                <TableData>{user.lastAccess}</TableData>
+                <TableData>
+                  <ActionIcons>
+                    <Link to={`/edit/${user.id}`}><FaEdit size={20} title="Editar" /></Link>
+                    <Link to={`/users`}><FaTrash size={20} title="Eliminar" /></Link>
+                  </ActionIcons>
+                </TableData>
+              </tr>
             ))}
-        </UsersContainer>
-    );
+          </tbody>
+        </UserTable>
+      </div>
+      <Pagination
+        totalItems={users.length}
+        itemsPerPage={usersPerPage}
+        onPageChange={handlePageChange}
+      />
+    </div>
+  );
 };
 
 export default UsersList;

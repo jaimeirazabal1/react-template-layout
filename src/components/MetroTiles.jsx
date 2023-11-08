@@ -17,7 +17,7 @@ const MetroContainer = styled.div`
 const MetroTile = styled.div`
   width: 200px;
   height: 150px;
-  background-color: #0078d4;
+  background-color: #689F38;
   color: #fff;
   display: flex;
   flex-direction: column;

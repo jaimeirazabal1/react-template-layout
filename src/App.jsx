@@ -10,6 +10,7 @@ import TerminosYPoliticas from './components/Terms';
 import PrivateRoute from './components/PrivateRoute'; // Importa PrivateRoute
 import Dashboard from './components/Dashboard';
 import UsersList from './components/Users/UsersList';
+import EditUserForm from './components/Users/EditUserForm';
 
 const AppContainer = styled.div`
   display: flex;
@@ -49,7 +50,11 @@ function App() {
               component={UsersList}
               isAuthenticated={isAuthenticated}
             />
-
+            <PrivateRoute
+              path="/edit/:id"
+              component={EditUserForm}
+              isAuthenticated={isAuthenticated}
+            />
           </Switch>
         </ContentContainer>
       </AppContainer>

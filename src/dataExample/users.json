@@ -1,0 +1,202 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "usuario1",
+            "branch": "branch1",
+            "userType": "Admin",
+            "email": "usuario1@example.com",
+            "accesses": 5,
+            "lastIp": "192.168.1.1",
+            "lastAccess": "2023-01-15 10:30 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 2,
+            "username": "usuario2",
+            "branch": "branch1",
+            "userType": "Usuario Regular",
+            "email": "usuario2@example.com",
+            "accesses": 8,
+            "lastIp": "192.168.1.2",
+            "lastAccess": "2023-01-16 11:45 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 3,
+            "username": "usuario3",
+            "branch": "branch1",
+            "userType": "Admin",
+            "email": "usuario3@example.com",
+            "accesses": 12,
+            "lastIp": "192.168.1.3",
+            "lastAccess": "2023-01-17 09:15 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 4,
+            "username": "usuario4",
+            "branch": "branch1",
+            "userType": "Usuario Regular",
+            "email": "usuario4@example.com",
+            "accesses": 7,
+            "lastIp": "192.168.1.4",
+            "lastAccess": "2023-01-18 02:30 PM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 5,
+            "username": "usuario5",
+            "branch": "branch1",
+            "userType": "Admin",
+            "email": "usuario5@example.com",
+            "accesses": 9,
+            "lastIp": "192.168.1.5",
+            "lastAccess": "2023-01-19 08:45 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 6,
+            "username": "usuario6",
+            "branch": "branch1",
+            "userType": "Usuario Regular",
+            "email": "usuario6@example.com",
+            "accesses": 4,
+            "lastIp": "192.168.1.6",
+            "lastAccess": "2023-01-20 03:20 PM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 7,
+            "username": "usuario7",
+            "branch": "branch1",
+            "userType": "Admin",
+            "email": "usuario7@example.com",
+            "accesses": 11,
+            "lastIp": "192.168.1.7",
+            "lastAccess": "2023-01-21 11:55 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 8,
+            "username": "usuario8",
+            "branch": "branch1",
+            "userType": "Usuario Regular",
+            "email": "usuario8@example.com",
+            "accesses": 6,
+            "lastIp": "192.168.1.8",
+            "lastAccess": "2023-01-22 07:10 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 9,
+            "username": "usuario9",
+            "branch": "branch1",
+            "userType": "Admin",
+            "email": "usuario9@example.com",
+            "accesses": 10,
+            "lastIp": "192.168.1.9",
+            "lastAccess": "2023-01-23 01:40 PM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 10,
+            "username": "usuario10",
+            "branch": "branch1",
+            "userType": "Usuario Regular",
+            "email": "usuario10@example.com",
+            "accesses": 7,
+            "lastIp": "192.168.1.10",
+            "lastAccess": "2023-01-24 04:25 PM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 11,
+            "username": "usuario11",
+            "branch": "branch1",
+            "userType": "Admin",
+            "email": "usuario11@example.com",
+            "accesses": 8,
+            "lastIp": "192.168.1.11",
+            "lastAccess": "2023-01-25 10:30 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 12,
+            "username": "usuario12",
+            "branch": "branch1",
+            "userType": "Usuario Regular",
+            "email": "usuario12@example.com",
+            "accesses": 5,
+            "lastIp": "192.168.1.12",
+            "lastAccess": "2023-01-26 11:45 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 13,
+            "username": "usuario13",
+            "branch": "branch1",
+            "userType": "Admin",
+            "email": "usuario13@example.com",
+            "accesses": 12,
+            "lastIp": "192.168.1.13",
+            "lastAccess": "2023-01-27 09:15 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 14,
+            "username": "usuario14",
+            "branch": "branch1",
+            "userType": "Usuario Regular",
+            "email": "usuario14@example.com",
+            "accesses": 7,
+            "lastIp": "192.168.1.14",
+            "lastAccess": "2023-01-28 02:30 PM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 15,
+            "username": "usuario15",
+            "branch": "branch1",
+            "userType": "Admin",
+            "email": "usuario15@example.com",
+            "accesses": 9,
+            "lastIp": "192.168.1.15",
+            "lastAccess": "2023-01-29 08:45 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 16,
+            "username": "usuario16",
+            "branch": "branch1",
+            "userType": "Usuario Regular",
+            "email": "usuario16@example.com",
+            "accesses": 4,
+            "lastIp": "192.168.1.16",
+            "lastAccess": "2023-01-30 03:20 PM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 17,
+            "username": "usuario17",
+            "branch": "branch1",
+            "userType": "Admin",
+            "email": "usuario17@example.com",
+            "accesses": 11,
+            "lastIp": "192.168.1.17",
+            "lastAccess": "2023-01-31 11:55 AM",
+            "image": "https://via.placeholder.com/50"
+        },
+        {
+            "id": 18,
+            "username": "usuario18",
+            "branch": "branch1",
+            "userType": "Usuario Regular",
+            "email": "usuario18@example.com",
+            "accesses": 6,
+            "lastIp": "192.168.1.18",
+            "lastAccess": "2023-02-01 07:10 AM",
+            "image": "https://via.placeholder.com/50"
+        }
+    ]
+}
