@@ -1,11 +1,12 @@
 // src/pages/Home.js
 import React from 'react';
 import MetroTiles from './MetroTiles';
+import TitleWithLine from './common/TitleWithLine';
 
 const Dashboard = () => {
     return (
         <div>
-            <h2>Dashboard Page</h2>
+            <TitleWithLine title="Dashboard"></TitleWithLine>
             <MetroTiles />
         </div>
     );

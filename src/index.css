@@ -1,18 +1,17 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* En tu archivo CSS principal o en un archivo de estilos separado */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+
+
+/* Aplica la fuente "Roboto" a los elementos deseados */
+body {
+  font-family: 'Roboto', sans-serif;
 }
+
+/* body {
+  background-color: #deede6;
+} */
 
 a {
   font-weight: 500;

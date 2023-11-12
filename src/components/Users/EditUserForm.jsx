@@ -3,88 +3,91 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 import styled from 'styled-components';
 import usersData from '../../dataExample/users.json';
 import { useParams } from 'react-router-dom';
+import TitleWithLine from '../common/TitleWithLine';
 const EditUserForm = () => {
-    const { id } = useParams();
-    const user = usersData.users.find(user => user.id == id)
-    const [editedUser, setEditedUser] = useState({ ...user });
-    console.log('editedUser', editedUser)
-    const { username, password, userType, branch, email } = editedUser;
+  const { id } = useParams();
+  const user = usersData.users.find(user => user.id == id)
+  const [editedUser, setEditedUser] = useState({ ...user });
+  console.log('editedUser', editedUser)
+  const { username, password, userType, branch, email } = editedUser;
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setEditedUser({ ...editedUser, [name]: value });
-    };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedUser({ ...editedUser, [name]: value });
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Aquí puedes agregar lógica para enviar la información actualizada del usuario
-        // a través de una solicitud HTTP o cualquier otro método necesario.
-        console.log('Usuario actualizado:', editedUser);
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Aquí puedes agregar lógica para enviar la información actualizada del usuario
+    // a través de una solicitud HTTP o cualquier otro método necesario.
+    console.log('Usuario actualizado:', editedUser);
+  };
 
-    return (
-        <Container>
-            <Title>INFORMACION DEL USUARIO</Title>
-            <Form onSubmit={handleSubmit}>
-                <FormGroup>
-                    <label>Usuario</label>
-                    <Input
-                        type="text"
-                        name="username"
-                        value={username}
-                        onChange={handleInputChange}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <label>Password</label>
-                    <Input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={handleInputChange}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <label>Tipo de Usuario</label>
-                    <Input
-                        type="text"
-                        name="userType"
-                        value={userType}
-                        onChange={handleInputChange}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <label>Sucursal</label>
-                    <Input
-                        type="text"
-                        name="branch"
-                        value={branch}
-                        onChange={handleInputChange}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <label>E-mail</label>
-                    <Input
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={handleInputChange}
-                    />
-                </FormGroup>
-                <Buttons>
-                    <Button type="submit">Modificar</Button>
-                    <Link to="/users"><CancelButton>Cancelar</CancelButton></Link>
-                </Buttons>
-            </Form>
-        </Container>
-    );
+  return (
+    <>
+      <TitleWithLine title="Información del usuario"></TitleWithLine>
+      <Container>
+
+        <Form onSubmit={handleSubmit}>
+          <FormGroup>
+            <label>Usuario</label>
+            <Input
+              type="text"
+              name="username"
+              value={username}
+              onChange={handleInputChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <label>Password</label>
+            <Input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleInputChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <label>Tipo de Usuario</label>
+            <Input
+              type="text"
+              name="userType"
+              value={userType}
+              onChange={handleInputChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <label>Sucursal</label>
+            <Input
+              type="text"
+              name="branch"
+              value={branch}
+              onChange={handleInputChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <label>E-mail</label>
+            <Input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleInputChange}
+            />
+          </FormGroup>
+          <Buttons>
+            <Button type="submit">Modificar</Button>
+            <Link to="/users"><CancelButton>Cancelar</CancelButton></Link>
+          </Buttons>
+        </Form>
+      </Container>
+    </>
+
+  );
 };
 
 const Container = styled.div`
-  background-color: #f0f0f0;
-  padding: 16px;
   border-radius: 4px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  padding: 0 100px;
 `;
 
 const Title = styled.h2`

@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Sidebar from './components/Sidebar';
@@ -11,10 +11,11 @@ import PrivateRoute from './components/PrivateRoute'; // Importa PrivateRoute
 import Dashboard from './components/Dashboard';
 import UsersList from './components/Users/UsersList';
 import EditUserForm from './components/Users/EditUserForm';
+import Menu from './components/common/Menu';
+import { GlobalContext } from './GlobalContext';
 
 const AppContainer = styled.div`
-  display: flex;
-  height: 100vh;
+ 
 `;
 
 const ContentContainer = styled.div`
@@ -26,19 +27,27 @@ const ContentContainer = styled.div`
 `;
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // Agrega el estado de autenticación
-
+  const { globalState, setGlobalState } = useContext(GlobalContext);
+  const { isAuthenticated } = globalState
+  let menuItems = [
+    { label: 'Dashboard', link: '/dashboard', private: true },
+    { label: 'Términos y Condiciones', link: '/terms', private: false },
+    { label: 'Términos y Condiciones', link: '/terms', private: true },
+    { label: 'Iniciar Sesión', link: '/login', private: false },
+  ];
+  menuItems = menuItems.filter(route => route.private == isAuthenticated)
   return (
     <Router>
       <AppContainer>
-        <Sidebar isAuthenticated={isAuthenticated} />
-        <ContentContainer>
+        <Menu items={menuItems} active={``} />
+        {/* <Sidebar isAuthenticated={isAuthenticated} /> */}
+        {/* <ContentContainer>*/
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact component={TerminosYPoliticas} />
             <Route path="/about" component={About} />
             <Route path="/terms" component={TerminosYPoliticas} />
             <Route path="/login">
-              <Login setIsAuthenticated={setIsAuthenticated} />
+              <Login />
             </Route>
             <PrivateRoute
               path="/dashboard"
@@ -56,7 +65,7 @@ function App() {
               isAuthenticated={isAuthenticated}
             />
           </Switch>
-        </ContentContainer>
+        /*</ContentContainer> */}
       </AppContainer>
     </Router>
   );

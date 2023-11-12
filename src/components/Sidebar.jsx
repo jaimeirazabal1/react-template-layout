@@ -9,7 +9,7 @@ import DashboardMenu from './common/DashboardMenu';
 
 const SidebarContainer = styled.div`
   width: 250px;
-  background-color: grey;
+  background-color: #8fac9e;
   color: #fff;
   height: 100%;
   position: fixed;

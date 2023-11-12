@@ -5,6 +5,7 @@ import usersData from '../../dataExample/users.json';
 import styled from 'styled-components';
 import { FaUser, FaEdit, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+import TitleWithLine from '../common/TitleWithLine';
 
 const UserTable = styled.table`
   width: 100%;
@@ -28,7 +29,9 @@ const ActionIcons = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
+const UserListContainer = styled.div`
+  padding:0 100px;
+`;
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -58,51 +61,55 @@ const UsersList = () => {
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber); // Define la función handlePageChange aquí
 
   return (
-    <div>
-      <h1>Lista de Usuarios</h1>
-      <div>
-        <UserTable>
-          <thead>
-            <tr>
-              <TableHeader>Nº</TableHeader>
-              <TableHeader>Usuario</TableHeader>
-              <TableHeader>Sucursal</TableHeader>
-              <TableHeader>Tipo de Usuario</TableHeader>
-              <TableHeader>Correo Electrónico</TableHeader>
-              <TableHeader>Accesos</TableHeader>
-              <TableHeader>Última IP</TableHeader>
-              <TableHeader>Último Acceso</TableHeader>
-              <TableHeader>Acciones</TableHeader>
-            </tr>
-          </thead>
-          <tbody>
-            {currentUsers.map((user, index) => (
-              <tr key={user.id}>
-                <TableData>{index + 1}</TableData>
-                <TableData>{user.username}</TableData>
-                <TableData>{user.branch}</TableData>
-                <TableData>{user.userType}</TableData>
-                <TableData>{user.email}</TableData>
-                <TableData>{user.accesses}</TableData>
-                <TableData>{user.lastIp}</TableData>
-                <TableData>{user.lastAccess}</TableData>
-                <TableData>
-                  <ActionIcons>
-                    <Link to={`/edit/${user.id}`}><FaEdit size={20} title="Editar" /></Link>
-                    <Link to={`/users`}><FaTrash size={20} title="Eliminar" /></Link>
-                  </ActionIcons>
-                </TableData>
+    <>
+
+      <TitleWithLine title="Lista de Usuarios"></TitleWithLine>
+      <UserListContainer>
+
+        <div>
+          <UserTable>
+            <thead>
+              <tr>
+                <TableHeader>Nº</TableHeader>
+                <TableHeader>Usuario</TableHeader>
+                <TableHeader>Sucursal</TableHeader>
+                <TableHeader>Tipo de Usuario</TableHeader>
+                <TableHeader>Correo Electrónico</TableHeader>
+                <TableHeader>Accesos</TableHeader>
+                <TableHeader>Última IP</TableHeader>
+                <TableHeader>Último Acceso</TableHeader>
+                <TableHeader>Acciones</TableHeader>
               </tr>
-            ))}
-          </tbody>
-        </UserTable>
-      </div>
-      <Pagination
-        totalItems={users.length}
-        itemsPerPage={usersPerPage}
-        onPageChange={handlePageChange}
-      />
-    </div>
+            </thead>
+            <tbody>
+              {currentUsers.map((user, index) => (
+                <tr key={user.id}>
+                  <TableData>{index + 1}</TableData>
+                  <TableData>{user.username}</TableData>
+                  <TableData>{user.branch}</TableData>
+                  <TableData>{user.userType}</TableData>
+                  <TableData>{user.email}</TableData>
+                  <TableData>{user.accesses}</TableData>
+                  <TableData>{user.lastIp}</TableData>
+                  <TableData>{user.lastAccess}</TableData>
+                  <TableData>
+                    <ActionIcons>
+                      <Link to={`/edit/${user.id}`}><FaEdit size={20} title="Editar" /></Link>
+                      <Link to={`/users`}><FaTrash size={20} title="Eliminar" /></Link>
+                    </ActionIcons>
+                  </TableData>
+                </tr>
+              ))}
+            </tbody>
+          </UserTable>
+        </div>
+        <Pagination
+          totalItems={users.length}
+          itemsPerPage={usersPerPage}
+          onPageChange={handlePageChange}
+        />
+      </UserListContainer>
+    </>
   );
 };
 
